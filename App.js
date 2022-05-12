@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
+import NavbarGeneral from './src/components/general/navbar';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>To share a photo from your phone with a friend, just press the button below! khadija</Text>
+      <NavbarGeneral/>
     </View>
   );
 }
