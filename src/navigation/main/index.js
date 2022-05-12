@@ -8,11 +8,11 @@ const Stack = createStackNavigator();
 
 export default function Route(){
     const currentUserObj =useSelector(state=>state.auth)
-    // const dispatch =useDispatch();
+    const dispatch =useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(userAuthStateListener());
-    // }, [])
+    useEffect(() => {
+        dispatch(userAuthStateListener());
+    }, [])
     if(currentUserObj.loaded){
         return(
             < View></View>
@@ -22,11 +22,12 @@ export default function Route(){
         <NavigationContainer>
             <Stack.Navigator>
                 {!currentUserObj.currentUser ==null ?
-            <Stack.Screen name="auth" component={AuthScreen} options={{headerShow :false}}/>
+            <Stack.Screen name="auth" component={AuthScreen} options={{headerShow :true}}/>
             :
                 <>
-                <Stack.Screen name="home" component={HomeScreen} options={{headerShow :false}}/>
-                <Stack.Screen name="home" component={HomeScreen} options={{headerShow :false}}/>
+                <Stack.Screen name="home" component={HomeScreen} options={{headerShow :true}}/>
+                <Stack.Screen name="login" component={LoginScreen} options={{headerShow :true}}/>
+                <Stack.Screen name="register" component={RegisterScreen} options={{headerShow :true}}/>
                 </>
                 }
             </Stack.Navigator>
