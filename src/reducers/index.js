@@ -5,8 +5,8 @@ import {combineReducers} from 'redux';
 
 const allReducers = combineReducers({
     authenticated: authReducer,
-    role: roleReducer,
-    id: userIdReducer
+    // role: roleReducer,
+    // id: userIdReducer
 })
 
 export default allReducers;

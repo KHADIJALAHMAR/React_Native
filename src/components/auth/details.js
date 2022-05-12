@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import { Feather } from '@expo/vector-icons';
 import styles from './style';
 import { useDispatch } from 'react-redux'
-import { loginAction, register } from '../../../redux/actions';
+import { loginAction} from '../../actions/authAction';
 
 /**
  * Function that renders a component that renders a signin/signup
@@ -25,15 +25,14 @@ export default function AuthDetails({ authPage, setDetailsPage }) {
     /**
      * dispatch login action
      */
-    const handleLogin = () => {
-        await dispatch(loginAction());
-        dispatch(login(email, password))
-            .then(() => {
-                console.log('login successful')
-            })
-            .catch(() => {
-                console.log('login unsuccessful')
-            })
+    const handleLogin = async () => {
+        await dispatch(loginAction(''))
+            // .then(() => {
+            //     console.log('login successful')
+            // })
+            // .catch(() => {
+            //     console.log('login unsuccessful')
+            // })
     }
 
     /**
