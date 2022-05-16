@@ -4,14 +4,12 @@ import React from "react";
 import Navbargeneral from "../../components/general/navbar/index";
 import { withTheme } from "react-native-paper";
 
-const HomeScreen = ({ navigation }) => {
-  
+const HomeScreen = () => {
+
   // console.log(navigation, "home")
   return (
     <View>
-      <Navbargeneral navigate={ navigation} />
-      {/* <Text> helloooo</Text> */}
-      {/* <MyButton/> */}
+      <Navbargeneral  />
     </View>
   );
 };

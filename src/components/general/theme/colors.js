@@ -1,7 +1,8 @@
-
+import { DefaultTheme} from 'react-native-paper';
 const theme = {
-
+    ...DefaultTheme,
     colors : {
+        ...DefaultTheme.colors,
         primary: '#7159c1',
         secundary: '#f2f2f2',
         tertiary: '#cbc9c9',
@@ -29,33 +30,33 @@ const theme = {
         nonaryDark: '#ff9800',
         denaryDark: '#009688',
     },
-    fonts : {
-        primary: '#7159c1',
-        secundary: '#f2f2f2',
-        tertiary: '#cbc9c9',
-        quaternary: '#fff',
-        quinary: '#000',
-        senary: '#6a1b9a',
-        septenary: '#00bcd4',
-        octonary: '#ffc107',
-        nonary: '#ff9800',
-        denary: '#009688',
-        undenary: '#673ab7',
-        decenary: '#2196f3',
-        undecenary: '#3f51b5',
-        duodecenary: '#03a9f4',
-        tredecenary: '#00e676',
+    // fonts : {
+    //     primary: '#7159c1',
+    //     secundary: '#f2f2f2',
+    //     tertiary: '#cbc9c9',
+    //     quaternary: '#fff',
+    //     quinary: '#000',
+    //     senary: '#6a1b9a',
+    //     septenary: '#00bcd4',
+    //     octonary: '#ffc107',
+    //     nonary: '#ff9800',
+    //     denary: '#009688',
+    //     undenary: '#673ab7',
+    //     decenary: '#2196f3',
+    //     undecenary: '#3f51b5',
+    //     duodecenary: '#03a9f4',
+    //     tredecenary: '#00e676',
     
-        primaryDark: '#5a4cb8',
-        secundaryDark: '#f2f2f2',
-        tertiaryDark: '#cbc9c9',
-        quaternaryDark: '#fff',
-        quinaryDark: '#000',
-        senaryDark: '#6a1b9a',
-        septenaryDark: '#00bcd4',
-        octonaryDark: '#ffc107',
-        nonaryDark: '#ff9800',
-        denaryDark: '#009688',
-    }
+    //     primaryDark: '#5a4cb8',
+    //     secundaryDark: '#f2f2f2',
+    //     tertiaryDark: '#cbc9c9',
+    //     quaternaryDark: '#fff',
+    //     quinaryDark: '#000',
+    //     senaryDark: '#6a1b9a',
+    //     septenaryDark: '#00bcd4',
+    //     octonaryDark: '#ffc107',
+    //     nonaryDark: '#ff9800',
+    //     denaryDark: '#009688',
+    // }
 }
 export default theme;

@@ -4,9 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 // import { userAuthStateListener } from '../../redux/actions';
 import HomeScreen from "../../screen/Home/HomeScreen";
 import RegisterScreen from "../../screen/auth/register/register";
-// import { createStackNavigator } from "@reacwt-navigation/native-stack";
-
 import { createStackNavigator } from "@react-navigation/stack";
+
 
 
 const Route = () => {
