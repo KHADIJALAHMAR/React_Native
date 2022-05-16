@@ -14,7 +14,7 @@ const Route = () => {
     <Stack.Navigator initialRouteName="splashScreen">
       <Stack.Screen name="home" component={HomeScreen} options={{ headerShown: false } } />
       <Stack.Screen name="splashScreen" component={SplashScreen} options={{ headerShown: false } }/>
-      <Stack.Screen name="register" component={RegisterScreen} />
+      <Stack.Screen name="register" component={RegisterScreen}  />
     </Stack.Navigator>
   );
 };
