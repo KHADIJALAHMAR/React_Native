@@ -7,7 +7,7 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
-    backgroundColor: '#FF6347'
+    backgroundColor: '#000000'
   },
   header: {
       flex: 2,
@@ -24,7 +24,9 @@ const styles = StyleSheet.create({
   },
   logo: {
       width: height_logo,
-      height: height_logo
+      height: height_logo,
+      resizeMode: 'stretch',
+      borderRadius:50,
   },
   title: {
       color: '#05375a',
