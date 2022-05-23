@@ -3,9 +3,9 @@ import React from 'react';
 import { Colors } from '../../../componentes/generel/contants';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { LinearGradient } from 'expo-linear-gradient';
-import style from "./style";
+import style from "../register.js/style";
 
-import {PrimaryButton } from "../../../componentes/generel/button/button";
+// import {PrimaryButton } from "../../../componentes/generel/button/button";
 
 export default function Login ({navigation})  {
     return (
@@ -15,53 +15,37 @@ export default function Login ({navigation})  {
                 <Text  style={style.text_header}>Welcome!</Text>
             </View>
                 <View style={style.footer}>
-                <Text style={style.text_footer }>Username</Text>
+                <Text style={style.text_footer }>Email</Text>
                   <View style={style.action}>
-                  <FontAwesome name="user-o" size={20} />
+                  <FontAwesome name="envelope"  size={20} />
                         <TextInput 
-                            placeholder="Your Username"
+                            placeholder="Your Email"
                             placeholderTextColor="#666666"
                             style={[style.textInput, {
                                 color:Colors.text
                             }]}
                             />
                 </View>
+                <Text style={[style.text_footer,{marginTop: 30}]}>Password</Text>
+                  <View style={style.action}>
+                  <FontAwesome name="lock" size={20} />
+                        <TextInput 
+                            placeholder="Password"
+                            placeholderTextColor="#666666"
+                            style={[style.textInput, {
+                                color:Colors.text
+                            }]}
+                            />
+                </View>
+                <LinearGradient
+                    colors={['#E2BB73' ,'#AC9261']}
+                    style={[style.signIn ,{marginTop: 30}]}
+                >
+                    <Text style={[style.textSign, {
+                        color:'#fff'
+                    }]}>Login</Text>
+                </LinearGradient>
                 </View>
       </View>
     );
   };
-  
-{/* const style = StyleSheet.create({
-    textContainer: {
-      flex: 1,
-      paddingHorizontal: 50,
-      justifyContent: 'space-between',
-      paddingBottom: 40,
-      marginBottom:70,
-    },
-    textInput:{
-      flexDirection:"row",
-      alignItems:"center",
-    },
-    image:{
-      top: -20,
-      width: '100%',
-      height:' 100%',
-      borderRadius: 40,
-      // left: 150,
-    },
-    input:{
-    borderColor: Colors.grey,
-    height: 30,
-    borderRadius: 30,
-    marginTop:30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    }
-    
-  }); */}
-
-
-
-// export default Login;
