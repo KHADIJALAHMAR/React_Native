@@ -1,9 +1,9 @@
-import { View, Text ,StyleSheet,TextInput,ImageBackground} from 'react-native';
+import { View, Text ,StyleSheet,TextInput,ImageBackground,TouchableOpacity} from 'react-native';
 import React from 'react';
 import { Colors } from '../../../componentes/generel/contants';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { LinearGradient } from 'expo-linear-gradient';
-import style from "../register.js/style";
+import style from "./style";
 
 // import {PrimaryButton } from "../../../componentes/generel/button/button";
 
@@ -12,7 +12,7 @@ export default function Login ({navigation})  {
       <View style={style.container}>
            <View style={style.header}>
               <ImageBackground style={{height: "100%",width:"100%" , position: 'absolute'}}  source={require('../../../../assets/style-4.png')}/>
-                <Text  style={style.text_header}>Welcome!</Text>
+                <Text  style={[style.text_header,{marginBottom: 80}]}>Welcome!</Text>
             </View>
                 <View style={style.footer}>
                 <Text style={style.text_footer }>Email</Text>
@@ -37,14 +37,19 @@ export default function Login ({navigation})  {
                             }]}
                             />
                 </View>
+                <TouchableOpacity
+                    style={style.button}
+                    onPress={() => navigation.navigate('register')}
+                    >
                 <LinearGradient
                     colors={['#E2BB73' ,'#AC9261']}
-                    style={[style.signIn ,{marginTop: 30}]}
+                    style={style.signIn}
                 >
                     <Text style={[style.textSign, {
                         color:'#fff'
-                    }]}>Login</Text>
+                    }]}>Sign In</Text>
                 </LinearGradient>
+              </TouchableOpacity>
                 </View>
       </View>
     );

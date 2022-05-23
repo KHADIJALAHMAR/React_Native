@@ -1,16 +1,16 @@
-import { View, Text ,StyleSheet,TextInput,ImageBackground} from 'react-native';
+import { View, Text ,StyleSheet,TextInput,ImageBackground,TouchableOpacity} from 'react-native';
 import React from 'react';
 import { Colors } from '../../../componentes/generel/contants';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { LinearGradient } from 'expo-linear-gradient';
 import style from "./style";
 
-export default function Register() {
+export default function Register({navigation}) {
   return (
     <View style={style.container}>
           <View style={style.header}>
               <ImageBackground style={{height: "100%",width:"100%" , position: 'absolute'}}  source={require('../../../../assets/style-4.png')}/>
-                <Text  style={style.text_header}>Welcome!</Text>
+                <Text  style={[style.text_header,{marginBottom: 80}]}>Welcome!</Text>
             </View>
                 <View style={style.footer}>
                 <Text style={style.text_footer }>Username</Text>
@@ -70,7 +70,11 @@ export default function Register() {
                             }]}
                             />
                 </View> 
-                <LinearGradient
+                <TouchableOpacity
+                    style={style.button}
+                    onPress={() => navigation.navigate('login')}
+                    >
+                 <LinearGradient
                     colors={['#E2BB73' ,'#AC9261']}
                     style={style.signIn}
                 >
@@ -78,6 +82,9 @@ export default function Register() {
                         color:'#fff'
                     }]}>Sign In</Text>
                 </LinearGradient>
+              </TouchableOpacity>
+                
+              
             </View>
             
     </View>
