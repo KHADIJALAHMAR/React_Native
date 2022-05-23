@@ -1,21 +1,22 @@
-import React, { useEffect } from "react";
-import { View, Text, StatusBar } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-// import { userAuthStateListener } from '../../redux/actions';
-import HomeScreen from "../../screen/Home/HomeScreen";
-import RegisterScreen from "../../screen/auth/register/register";
-import SplashScreen from "../../screen/SplashScreen/SplashScreen "
-import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import RegisterScreen from "../../screen/Auth/register.js/register";
+import LoginScreen from  "../../screen/Auth/login/login";
+import HomeScreen from "../../screen/Home/home";
+import SplashScreen from "../../screen/SplashScreen/splashScreen";
 
+const Stack = createNativeStackNavigator();
 
-const Route = () => {
-  const Stack = createStackNavigator();
-  return (
-    <Stack.Navigator initialRouteName="splashScreen">
-      <Stack.Screen name="home" component={HomeScreen} options={{ headerShown: false } } />
-      <Stack.Screen name="splashScreen" component={SplashScreen} options={{ headerShown: false } }/>
-      <Stack.Screen name="register" component={RegisterScreen}  />
-    </Stack.Navigator>
-  );
-};
-export default Route;
+const Routes = () => {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="register">
+            <Stack.Screen name="SplashScreen" component={SplashScreen} />
+            <Stack.Screen name="register" component={RegisterScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
+}
+
+export default Routes;
