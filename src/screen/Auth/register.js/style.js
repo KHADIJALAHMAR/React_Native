@@ -7,7 +7,6 @@ const style = StyleSheet.create({
   container: {
     width,
     height, 
-    // backgroundColor:Colors.primary,
     backgroundColor:'#000',
   },
   header: {
@@ -22,7 +21,6 @@ footer: {
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
     paddingVertical: 30,
-    // backgroundColor:Colors.DARK_FIVE,
 },
 text_header: {
   color: '#fff',
