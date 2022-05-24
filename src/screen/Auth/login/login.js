@@ -8,6 +8,8 @@ import style from "./style";
 // import {PrimaryButton } from "../../../componentes/generel/button/button";
 
 export default function Login ({navigation})  {
+
+
     return (
       <View style={style.container}>
            <View style={style.header}>
