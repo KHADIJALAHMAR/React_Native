@@ -1,11 +1,39 @@
 import { View, Text ,StyleSheet,TextInput,ImageBackground,TouchableOpacity} from 'react-native';
-import React from 'react';
+import {React,useState} from 'react';
 import { Colors } from '../../../componentes/generel/contants';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { LinearGradient } from 'expo-linear-gradient';
 import style from "./style";
+import { Createuser } from '../../../services/Auth';
 
 export default function Register({navigation}) {
+
+  const [user , setUser] = useState({username: "" , email: "", password: "" , repeated_password: "", role: ""})
+  const [submitted, setSubmitted] = useState(false);
+
+
+  const handleSubmit = async () => {
+    if (
+      user.username &&
+      user.email &&
+      user.password &&
+      user.repeated_password &&
+      user.role
+    ) {
+      await Createuser(
+        user
+      );
+      await console.log(user)
+    }
+    await navigation.navigate('login')
+
+    setSubmitted(true);
+  };
+
+
+
+
+
   return (
     <View style={style.container}>
           <View style={style.header}>
@@ -19,6 +47,7 @@ export default function Register({navigation}) {
                         <TextInput 
                             placeholder="Your Username"
                             placeholderTextColor="#666666"
+                            onChangeText={username => setUser({...user, username: username})}
                             style={[style.textInput, {
                                 color:Colors.text
                             }]}
@@ -30,6 +59,7 @@ export default function Register({navigation}) {
                         <TextInput 
                             placeholder="Email"
                             placeholderTextColor="#666666"
+                            onChangeText={email => setUser({...user, email: email})}
                             style={[style.textInput, {
                                 color:Colors.text
                             }]}
@@ -41,6 +71,7 @@ export default function Register({navigation}) {
                         <TextInput 
                             placeholder="Password"
                             placeholderTextColor="#666666"
+                            onChangeText={password => setUser({...user, password: password})}
                             style={[style.textInput, {
                                 color:Colors.text
                             }]}
@@ -53,6 +84,7 @@ export default function Register({navigation}) {
                         <TextInput 
                             placeholder="Repeated Password"
                             placeholderTextColor="#666666"
+                            onChangeText={repeatedpassword => setUser({...user, repeated_password: repeatedpassword})}
                             style={[style.textInput, {
                                 color:Colors.text
                             }]}
@@ -65,6 +97,7 @@ export default function Register({navigation}) {
                         <TextInput 
                             placeholder="Chose Role"
                             placeholderTextColor="#666666"
+                            onChangeText={role => setUser({...user, role: role})}
                             style={[style.textInput, {
                                 color:Colors.text
                             }]}
@@ -72,11 +105,11 @@ export default function Register({navigation}) {
                 </View> 
                 <TouchableOpacity
                     style={style.button}
-                    onPress={() => navigation.navigate('login')}
+                    onPress={handleSubmit}
                     >
                  <LinearGradient
                     colors={['#E2BB73' ,'#AC9261']}
-                    style={style.signIn}
+                    style={style.signIn} 
                 >
                     <Text style={[style.textSign, {
                         color:'#fff'

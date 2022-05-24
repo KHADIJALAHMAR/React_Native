@@ -2,20 +2,10 @@ import axios from "axios";
 import APP_URL from "./URL";
 
 export const Createuser = async (
-    username,
-    email,
-    password,
-    repeated_password,
-    role
+    user
 ) => {
     try {
-    const response = await axios.post(`${APP_URL}/auth/register`, {
-        username,
-        email,
-        password,
-        repeated_password,
-        role,
-    });
+    const response = await axios.post(`${APP_URL}/auth/register`, user);
     return response.data;
     } catch (error) {
     return console.log({ error:error.message });
