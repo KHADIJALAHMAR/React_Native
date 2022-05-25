@@ -1,13 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { Text, View } from 'react-native';
 import Navigation from "./src/navigation/main/index";
-import { NavigationContainer } from "@react-navigation/native";
+import { Provider } from "react-redux";
 import Routes from "./src/navigation/main/index";
- 
+import store from "./src/store/index";
+
 export default function App() {
   return (
-    <View >
-      <Routes /> 
-    </View>
+    <Provider store={store}>
+      <Navigation>
+        <Routes />
+      </Navigation>
+    </Provider>
   );
 }

@@ -6,6 +6,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 import style from "./style";
 import {login} from "../../../services/Auth";
 import jwtDecode from "jwt-decode";
+import { useDispatch } from 'react-redux';
+import {loginAction,setRoleAction,setIdAction} from "../../../store/actions/authActions";
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useSelector } from 'react-redux';
 // import {PrimaryButton } from "../../../componentes/generel/button/button";
 
 export default function Login ({navigation})  {
@@ -13,15 +17,28 @@ export default function Login ({navigation})  {
         email: "",
         password:"",
     });
+
     const [submitted, setSubmitted] = useState(false);
+    const dispatch= useDispatch();
+    const Role= useSelector((state)=>state.role);
+    console.log(Role);
 
     const handelSubmit = async()=>{
         login(user.email,user.password).then((response)=>{
-            const user = jwtDecode(response.data.accessToken);
-            console.log(user);
+            (async () => {
+                await dispatch(loginAction(jwtDecode(response.data.accessToken)));
+                await dispatch(setRoleAction(jwtDecode(response.data.accessToken).role));
+                //  console.log(D1);
+                await dispatch(setIdAction(jwtDecode(response.data.accessToken).id));
+                const Token = await AsyncStorage.setItem('token', response.data.accessToken);
+                
+                // console.log(jwtDecode(response.data.accessToken).id);
+              })()
+            // const user = jwtDecode(response.data.accessToken);
+            // console.log(user);
             // token = "token=" + JSON.stringify(respon se.data.accessToken)
             // AsyncStorage.setItem()
-            console.log(response, token)
+            // console.log(response, t)
             // if(user.role==="client"){
             // navigate('/home')
             // }

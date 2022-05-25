@@ -11,11 +11,11 @@ const Stack = createNativeStackNavigator();
 const Routes = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="login">
-            <Stack.Screen name="SplashScreen" component={SplashScreen} />
-            <Stack.Screen name="HomeScreen" component={HomeScreen} />
-            <Stack.Screen name="register" component={RegisterScreen} />
-            <Stack.Screen name="login" component={LoginScreen} />
+            <Stack.Navigator initialRouteName="login" >
+            <Stack.Screen name="SplashScreen" component={SplashScreen}   options={{headerShown: false}}/>
+            <Stack.Screen name="HomeScreen" component={HomeScreen}  options={{headerShown: false}}/>
+            <Stack.Screen name="register" component={RegisterScreen} options={{headerShown: false}} />
+            <Stack.Screen name="login" component={LoginScreen}options={{headerShown: false}} />
 
             </Stack.Navigator>
         </NavigationContainer>

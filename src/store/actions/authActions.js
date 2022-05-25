@@ -1,6 +1,7 @@
-export const loginAction = () => {
+export const loginAction = (token) => {
     return {
-        type: 'LOGIN'
+        type: 'LOGIN',
+        payload: token
     }
 }
 
