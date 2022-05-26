@@ -28,20 +28,10 @@ export default function Login ({navigation})  {
             (async () => {
                 await dispatch(loginAction(jwtDecode(response.data.accessToken)));
                 await dispatch(setRoleAction(jwtDecode(response.data.accessToken).role));
-                //  console.log(D1);
                 await dispatch(setIdAction(jwtDecode(response.data.accessToken).id));
                 const Token = await AsyncStorage.setItem('token', response.data.accessToken);
                 
-                // console.log(jwtDecode(response.data.accessToken).id);
-              })()
-            // const user = jwtDecode(response.data.accessToken);
-            // console.log(user);
-            // token = "token=" + JSON.stringify(respon se.data.accessToken)
-            // AsyncStorage.setItem()
-            // console.log(response, t)
-            // if(user.role==="client"){
-            // navigate('/home')
-            // }
+            })()
             setSubmitted(true);
         })
         }
