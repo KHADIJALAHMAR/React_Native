@@ -1,23 +1,18 @@
 import React from 'react'
-import Navbar from "../../componentes/generel/navbar/navbar"
 import { ScrollView, StyleSheet, TextInput, Text,View } from 'react-native';
-// import Header from '../component/header';
 import Cards from '../../componentes/Cards/cards';
 import Feather from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
-export default function maels() {
+export default function maels({navigation}) {
   return (
     <ScrollView style={styles.container} >
-    {/* <Navbar/> */}
-  
     <View style={styles.header}>
-        <Icon name="arrow-back-ios" size={28} />
+        <Icon name="arrow-back-ios" size={28}  color={'white'}  onPress={() => navigation.navigate('Register')} />
         <Text style={{fontSize: 20, fontWeight: 'bold',color:'#fff'}}>Cart</Text>
       </View>
     <View>
-    {/* <Cards/> */}
     </View>
     <View
         style={{

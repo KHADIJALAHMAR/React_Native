@@ -46,7 +46,7 @@ const  SplashScreen= ({navigation}) => {
         </View>
 
         <PrimaryButton
-            onPress={() => navigation.navigate('register')}
+            onPress={() => navigation.navigate('Register')}
             title="Get Started"
         />
         </View>

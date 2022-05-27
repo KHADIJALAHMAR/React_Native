@@ -1,141 +1,110 @@
-import React, {useState, useEffect} from 'react';
-import {  StyleSheet, View, FlatList, Text, TextInput, Pressable } from 'react-native';
-import {  Card, Title, Paragraph  } from 'react-native-paper';
-import{ Colors} from "../../componentes/generel/contants/index"
-import APP_URL from '../../services/URL'
-import axios from 'axios';
+import {LinearGradient} from 'expo-linear-gradient';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ImageBackground
+} from 'react-native';
 
+ function  Profile () {
 
-const Cards = () => {
-const [ Data, setData ] = useState([])
-
-useEffect(() => {
-    axios.get(`${APP_URL}/Admin/Product`)
-    .then(res => {
-        console.log(res.data);
-        setData(res.data);
-    }).catch (err => {
-        console.log(err);
-        console.log('no data');
-    }) 
-},[])
-
-return (
-    <View style={styles.container} >
-      {Data.map((items, index) =>(
-         <Card key={index}  style={styles.content}>
-         <Card.Content style={styles.card}>
-           <Title style={styles.titel}>Pizza</Title>
-           <Paragraph>{items.name}</Paragraph>
-           <View style={styles.type}>
-                <Text style={styles.text} >{items.decsription}</Text>
-           </View>
-           <View style={styles.price}>
-                <Text style={styles.text} >{items.price}</Text>
-           </View>
-         </Card.Content>
-     <Card.Cover style={styles.image} source={{uri: `http://localhost:4000/Admin/Product/${items.id}/image`}}/>
-    
-     <Card.Actions style={styles.order_session}>
-     <TextInput
-         keyboardType='numeric'
-           style={styles.TextInput}
-           placeholder="Quantity"
-           placeholderTextColor="#C1C0BB"
-         />
-       <Pressable style={styles.order_button}>
-          <Text style={styles.order} >Order</Text>
-       </Pressable>
- 
-     </Card.Actions>
-   </Card>
-       ))}       
   
-    </View>
-  );
-}
+    return (
+      <View style={styles.container}>
+      
+          <ImageBackground style={styles.header} source={require('../../../assets/style-4.png')}>
+            <LinearGradient  
+                colors={['#00000000', '#000000']} 
+                start={[0.1,0.1]}
+                style={{height : '100%', width : '100%'}}>
+            </LinearGradient>
+          </ImageBackground>
+          
+          <Image style={styles.avatar} source={require('../../../assets/onboardImage.png')}/>
+          <View style={styles.body}>
+            <View style={styles.bodyContent}>
+              <Text style={styles.name}>John Doe</Text>
+              <Text style={styles.info}>UX Designer / Mobile developer</Text>
+              <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
+              
+              <TouchableOpacity style={styles.buttonContainer}>
+                <Text>Opcion 1</Text>  
+              </TouchableOpacity>              
+              <TouchableOpacity style={styles.buttonContainer}>
+                <Text>Opcion 2</Text> 
+              </TouchableOpacity>
+            </View>
+        </View>
+      </View>
+    );
+  }
+
 
 const styles = StyleSheet.create({
-  container:{
+  header:{
+    height:200,
+  },
+  linearGradient: {
     alignItems: 'center',
-    
-  
-  },
-  content:{
-    width: '90%',
-    borderRadius: 10,
-    marginVertical:10,
-    position:'relative',
-    
-  },
-  order:{
-    color:"#FFF",
-    fontFamily:'poppins-regular'
-
-  },
-  titel:{
-    color: "#bc8c4c",
-    fontFamily:'poppins-regular'
-  },
-
-  TextInput: {
-    height: 45,
-    padding: 10,
-    width:"70%",
-    marginLeft: 10,
-    backgroundColor: "#EBE9E6",
+    justifyContent: 'center',
     borderRadius: 5,
-    fontFamily:'poppins-regular'
-
-    
+    height: 200,
+    width: 40,
   },
-  order_session:{
-    display: 'flex',
+  avatar: {
+    width: 130,
+    height: 130,
+    borderRadius: 63,
+    borderWidth: 4,
+    borderColor: "white",
+    marginBottom:10,
+    alignSelf:'center',
+    position: 'absolute',
+    marginTop:130
+  },
+  name:{
+    fontSize:22,
+    color:"#FFFFFF",
+    fontWeight:'600',
+  },
+  body:{
+    marginTop:40,
+  },
+  bodyContent: {
+    flex: 1,
+    alignItems: 'center',
+    padding:30,
+  },
+  name:{
+    fontSize:28,
+    color: "#696969",
+    fontWeight: "600"
+  },
+  info:{
+    fontSize:16,
+    color: "#00BFFF",
+    marginTop:10
+  },
+  description:{
+    fontSize:16,
+    color: "#696969",
+    marginTop:10,
+    textAlign: 'center'
+  },
+  buttonContainer: {
+    marginTop:10,
+    height:45,
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent:'space-between',
-    
-  },
-  order_button:{
-    width: "20%",
-    borderRadius: 5,
-    height: 45,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 3,
-    backgroundColor:Colors.primary ,
-    fontFamily:'poppins-regular'
-
-  },
-  type:{
-    position: 'absolute',
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
     backgroundColor: "#bc8c4c",
-    top: 0,
-    right:0,
-    paddingHorizontal:12,
-    borderTopEndRadius: 10,
-    borderBottomStartRadius: 10,
-    fontFamily:'poppins-regular'
-
   },
-  price:{
-    position: 'absolute',
-    backgroundColor: "#bc8c4c",
-    top: 25,
-    right:0,
-    paddingHorizontal:12,
-    borderBottomStartRadius: 10,
-    fontFamily:'poppins-regular'
-
-  },
-  text:{
-    color: "#fff",
-    fontFamily:'poppins-regular'
-
-  }
- 
+});
 
 
-
-})
-export default Cards;
+export default Profile;
