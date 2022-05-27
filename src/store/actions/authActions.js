@@ -23,4 +23,17 @@ export const setIdAction = (id) => {
         type: 'SETID',
         payload: id
     }
+
+}
+export const setRoleUsername = (username) => {
+    return {
+        type: 'SETUSERNAME',
+        payload: username
+    }
+}
+export const setRoleEmail = (email) => {
+    return {
+        type: 'SETEMAIL',
+        payload: email
+    }
 }

@@ -20,7 +20,7 @@ export default function Login ({navigation})  {
 
     const [submitted, setSubmitted] = useState(false);
     const dispatch= useDispatch();
-    const Role= useSelector((state)=>state.role);
+    const Role= useSelector((state)=>state.email);
     console.log(Role);
 
     const handelSubmit = async()=>{
@@ -30,6 +30,7 @@ export default function Login ({navigation})  {
                 await dispatch(setRoleAction(jwtDecode(response.data.accessToken).role));
                 await dispatch(setIdAction(jwtDecode(response.data.accessToken).id));
                 const Token = await AsyncStorage.setItem('token', response.data.accessToken);
+                await navigation.navigate('Meals')
                 
             })()
             setSubmitted(true);
