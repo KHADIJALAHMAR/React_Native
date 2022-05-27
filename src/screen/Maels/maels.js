@@ -4,13 +4,20 @@ import { ScrollView, StyleSheet, TextInput, Text,View } from 'react-native';
 // import Header from '../component/header';
 import Cards from '../../componentes/Cards/cards';
 import Feather from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 export default function maels() {
   return (
     <ScrollView style={styles.container} >
-    <Navbar/>
-    <View >
-        <Text style={{ fontSize: 20, marginLeft: 18, fontFamily: 'poppins-bold', marginTop: 5, color: "#bc8c4c" }}>Meals List</Text>
+    {/* <Navbar/> */}
+  
+    <View style={styles.header}>
+        <Icon name="arrow-back-ios" size={28} />
+        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Cart</Text>
+      </View>
+    <View>
+    {/* <Cards/> */}
     </View>
     <View
         style={{
@@ -28,7 +35,7 @@ export default function maels() {
           color="#C6C6C6"
           style={{marginRight: 5}}
         />
-        <TextInput placeholder="Search" />
+        <TextInput placeholder="Search" style={styles.TextInput} />
       </View>
         <Cards  />
       
@@ -41,9 +48,15 @@ export default function maels() {
 const styles = StyleSheet.create({
     container:{
       flex: 1,
-      backgroundColor: "#FFF",
+      backgroundColor: "#000",
     },
-  
+    header: {
+      paddingVertical: 20,
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginHorizontal: 20,
+    },
+    
     TextInput: {
       height: 40,
       width:"80%",

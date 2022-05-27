@@ -25,7 +25,7 @@ export default function Register({navigation}) {
       );
       await console.log(user)
     }
-    await navigation.navigate('login')
+    await navigation.navigate('Login')
 
     setSubmitted(true);
   };
