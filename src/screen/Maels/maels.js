@@ -14,7 +14,7 @@ export default function maels() {
   
     <View style={styles.header}>
         <Icon name="arrow-back-ios" size={28} />
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Cart</Text>
+        <Text style={{fontSize: 20, fontWeight: 'bold',color:'#fff'}}>Cart</Text>
       </View>
     <View>
     {/* <Cards/> */}

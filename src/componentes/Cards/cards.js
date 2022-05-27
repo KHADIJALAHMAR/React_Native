@@ -30,8 +30,8 @@ const CartScreen = ({navigation}) => {
             flex: 1,
           }}>
           <Text style={{fontWeight: 'bold', fontSize: 16 ,color:'#fff'}}>{item.name}</Text>
-          <Text style={{fontSize: 13, color: Colors.white}}>
-            {item.ingredients}
+          <Text style={{fontSize: 10, color: Colors.grey}}>
+            {item.decsription}
           </Text>
           <Text style={{fontSize: 17, fontWeight: 'bold', color: Colors.white}}>${item.price}</Text>
         </View>
