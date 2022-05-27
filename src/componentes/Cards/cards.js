@@ -1,141 +1,102 @@
 import React, {useState, useEffect} from 'react';
-import {  StyleSheet, View, FlatList, Text, TextInput, Pressable } from 'react-native';
-import {  Card, Title, Paragraph  } from 'react-native-paper';
+import {SafeAreaView, StyleSheet, View, Text, Image,FlatList} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import{ Colors} from "../../componentes/generel/contants/index"
 import APP_URL from '../../services/URL'
 import axios from 'axios';
+import {PrimaryButton} from '../../componentes/generel/button/button';
 
-
-const Cards = () => {
-  const [ Data, setData ] = useState([])
-
-  useEffect(() => {
-    axios.get(`${APP_URL}/Admin/Product`)
-    .then(res => {
-        console.log(res.data);
-        setData(res.data);
-    }).catch (err => {
-        console.log(err);
-        console.log('no data');
-    }) 
-},[])
-
-return (
-    <View style={styles.container} >
-      {Data.map((items, index) =>(
-         <Card key={index}  style={styles.content}>
-         <Card.Content style={styles.card}>
-           <Title style={styles.titel}>Pizza</Title>
-           <Paragraph>{items.name}</Paragraph>
-           <View style={styles.type}>
-                <Text style={styles.text} >{items.decsription}</Text>
-           </View>
-           <View style={styles.price}>
-                <Text style={styles.text} >{items.price}</Text>
-           </View>
-         </Card.Content>
-     <Card.Cover style={styles.image} source={{uri: `http://localhost:4000/Admin/Product/${items.id}/image`}}/>
-    
-     <Card.Actions style={styles.order_session}>
-     <TextInput
-         keyboardType='numeric'
-           style={styles.TextInput}
-           placeholder="Quantity"
-           placeholderTextColor="#C1C0BB"
-         />
-       <Pressable style={styles.order_button}>
-          <Text style={styles.order} >Order</Text>
-       </Pressable>
- 
-     </Card.Actions>
-   </Card>
-       ))}       
-  
-    </View>
+const CartScreen = ({navigation}) => {
+    const [ Data, setData ] = useState([])
+    useEffect(() => {
+        axios.get(`${APP_URL}/Admin/Product`)
+        .then(res => {
+            console.log(res.data);
+            setData(res.data);
+        }).catch (err => {
+            console.log(err);
+            console.log('no data');
+        }) 
+    },[])
+  const CartCard = ({item}) => {
+    return (
+      <View style={style.cartCard}>
+        <Image source={{uri: `http://localhost:4000/Admin/Product/${item.id}/image`}} style={{height: 80, width: 80}} />
+        <View
+          style={{
+            height: 100,
+            marginLeft: 10,
+            paddingVertical: 20,
+            flex: 1,
+          }}>
+          <Text style={{fontWeight: 'bold', fontSize: 16 ,color:'#fff'}}>{item.name}</Text>
+          <Text style={{fontSize: 13, color: Colors.white}}>
+            {item.ingredients}
+          </Text>
+          <Text style={{fontSize: 17, fontWeight: 'bold', color: Colors.white}}>${item.price}</Text>
+        </View>
+        <View style={{marginRight: 20, alignItems: 'center'}}>
+          <Text style={{fontWeight: 'bold', fontSize: 18 ,color: Colors.white}}>3</Text>
+          <View style={style.actionBtn}>
+            <Icon name="remove" size={25} color={Colors.white} />
+            <Icon name="add" size={25} color={Colors.white} />
+          </View>
+        </View>
+      </View>
+    );
+  };
+  return (
+    <SafeAreaView style={{backgroundColor: '#000', flex: 1}}>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: 80}}
+        data={Data}
+        renderItem={({item}) => <CartCard item={item} />}         
+        ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
+        ListFooterComponent={() => (
+          <View>
+            <View style={{marginHorizontal: 30}}>
+              <PrimaryButton title="CHECKOUT" />
+            </View>
+          </View>
+        )}
+      />
+    </SafeAreaView>
   );
-}
-
-const styles = StyleSheet.create({
-  container:{
-    alignItems: 'center',
-    
-  
-  },
-  content:{
-    width: '90%',
-    borderRadius: 10,
-    marginVertical:10,
-    position:'relative',
-    
-  },
-  order:{
-    color:"#FFF",
-    fontFamily:'poppins-regular'
-
-  },
-  titel:{
-    color: "#bc8c4c",
-    fontFamily:'poppins-regular'
-  },
-
-  TextInput: {
-    height: 45,
-    padding: 10,
-    width:"70%",
-    marginLeft: 10,
-    backgroundColor: "#EBE9E6",
-    borderRadius: 5,
-    fontFamily:'poppins-regular'
-
-    
-  },
-  order_session:{
-    display: 'flex',
+};
+const style = StyleSheet.create({
+  header: {
+    paddingVertical: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'space-between',
-    
-  },
-  order_button:{
-    width: "20%",
-    borderRadius: 5,
-    height: 45,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 3,
-    backgroundColor:Colors.primary ,
-    fontFamily:'poppins-regular'
+    marginHorizontal: 20,
 
   },
-  type:{
-    position: 'absolute',
-    backgroundColor: "#bc8c4c",
-    top: 0,
-    right:0,
-    paddingHorizontal:12,
-    borderTopEndRadius: 10,
-    borderBottomStartRadius: 10,
-    fontFamily:'poppins-regular'
-
+  cartCard: {
+    height: 100,
+    elevation: 15,
+    borderRadius: 10,
+    backgroundColor: '#000',
+    marginVertical: 10,
+    marginHorizontal: 20,
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#f2f2f2',
+    paddingBottom: 5
+    // color:'#fff'
   },
-  price:{
-    position: 'absolute',
-    backgroundColor: "#bc8c4c",
-    top: 25,
-    right:0,
-    paddingHorizontal:12,
-    borderBottomStartRadius: 10,
-    fontFamily:'poppins-regular'
-
+  actionBtn: {
+    width: 80,
+    height: 30,
+    backgroundColor: Colors.primary,
+    borderRadius: 30,
+    paddingHorizontal: 5,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'center',
   },
-  text:{
-    color: "#fff",
-    fontFamily:'poppins-regular'
+});
 
-  }
- 
-
-
-
-})
-export default Cards;
+export default CartScreen;
