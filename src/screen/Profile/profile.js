@@ -7,9 +7,15 @@ import {
   TouchableOpacity,
   ImageBackground
 } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { useSelector } from 'react-redux';
+import { PrimaryButton } from '../../componentes/generel/button/button';
 
- function  Profile () {
+ function  Profile ({navigation}) {
 
+    const Username= useSelector((state)=>state.username);
+    const email=useSelector((state)=>state.email);
+    // console.log(Username);
   
     return (
       <View style={styles.container}>
@@ -25,17 +31,29 @@ import {
           <Image style={styles.avatar} source={require('../../../assets/onboardImage.png')}/>
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>John Doe</Text>
-              <Text style={styles.info}>UX Designer / Mobile developer</Text>
-              <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
-              
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Opcion 1</Text>  
-              </TouchableOpacity>              
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Opcion 2</Text> 
-              </TouchableOpacity>
+              <Text style={styles.name}>{Username}</Text>
             </View>
+            <View style={{
+              alignSelf:'center',
+              flexDirection:'row',
+              backgroundColor:"#fff",
+              width:"90%",
+              padding:20,
+              paddingBottom:22,
+              borderBottomEndRadius:10,
+              shadowOpacity:80,
+              elevation:15,
+              marginTop:20,
+              marginBottom:40
+          }}>
+            <FontAwesome name="envelope"  size={20} />
+            <Text style={styles.name}>{email}</Text>
+            </View>
+            <PrimaryButton
+            onPress={() => navigation.navigate('Maels')}
+            title="Maels"
+        />
+    
         </View>
       </View>
     );
@@ -65,9 +83,8 @@ const styles = StyleSheet.create({
     marginTop:130
   },
   name:{
-    fontSize:22,
-    color:"#FFFFFF",
-    fontWeight:'600',
+  paddingLeft: 10,
+  color: '#05375a',
   },
   body:{
     marginTop:40,
@@ -76,11 +93,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     padding:30,
-  },
-  name:{
-    fontSize:28,
-    color: "#696969",
-    fontWeight: "600"
   },
   info:{
     fontSize:16,

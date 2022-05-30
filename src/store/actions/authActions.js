@@ -25,13 +25,13 @@ export const setIdAction = (id) => {
     }
 
 }
-export const setRoleUsername = (username) => {
+export const setUsername = (username) => {
     return {
         type: 'SETUSERNAME',
         payload: username
     }
 }
-export const setRoleEmail = (email) => {
+export const setEmail = (email) => {
     return {
         type: 'SETEMAIL',
         payload: email

@@ -7,7 +7,7 @@ import style from "./style";
 import {login} from "../../../services/Auth";
 import jwtDecode from "jwt-decode";
 import { useDispatch } from 'react-redux';
-import {loginAction,setRoleAction,setIdAction} from "../../../store/actions/authActions";
+import {loginAction,setRoleAction,setIdAction,setEmail,setUsername} from "../../../store/actions/authActions";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useSelector } from 'react-redux';
 // import {PrimaryButton } from "../../../componentes/generel/button/button";
@@ -29,8 +29,12 @@ export default function Login ({navigation})  {
                 await dispatch(loginAction(jwtDecode(response.data.accessToken)));
                 await dispatch(setRoleAction(jwtDecode(response.data.accessToken).role));
                 await dispatch(setIdAction(jwtDecode(response.data.accessToken).id));
+                await dispatch(setEmail(jwtDecode(response.data.accessToken).email));
+                await dispatch(setUsername(jwtDecode(response.data.accessToken).username));
+                
                 const Token = await AsyncStorage.setItem('token', response.data.accessToken);
-                await navigation.navigate('Meals')
+                await navigation.navigate('Profile')
+                console.log(jwtDecode(response.data.accessToken).email);
                 
             })()
             setSubmitted(true);

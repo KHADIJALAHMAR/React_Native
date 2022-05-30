@@ -1,6 +1,6 @@
 const UsernameReducer = (state = false , action) => {
     switch (action.type) {
-        case 'SETROLE':
+        case 'SETUSERNAME':
             return action.payload
 
         default:

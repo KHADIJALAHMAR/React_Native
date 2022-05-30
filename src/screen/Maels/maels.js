@@ -4,7 +4,6 @@ import Cards from '../../componentes/Cards/cards';
 import Feather from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-
 export default function maels({navigation}) {
   return (
     <ScrollView style={styles.container} >
